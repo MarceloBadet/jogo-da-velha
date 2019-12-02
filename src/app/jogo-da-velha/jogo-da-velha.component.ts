@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JogoDaVelhaService } from './shared';
 
 @Component({
   selector: 'app-jogo-da-velha',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JogoDaVelhaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private jogoDaVelhaService: JogoDaVelhaService) { }
 
   ngOnInit() {
+  	this.jogoDaVelhaService.inicializar();
+  }
+
+  get showInicio(): boolean {
+  	return this.jogoDaVelhaService.showInicio;
+  }
+
+  get showFinal(): boolean {
+  	return this.jogoDaVelhaService.showFinal;
+  }
+
+  get showTabuleiro(): boolean {
+  	return this.jogoDaVelhaService.showTabuleiro;
+  }
+
+  iniciarJogo(): void{
+  	this.jogoDaVelhaService.iniciarJogo();
   }
 
 }
